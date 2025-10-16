@@ -18,7 +18,6 @@ HG680P - Pantat hitam, menggunakan wireless driver yang berbeda dengan pantat pu
     wget https://github.com/ophub/kernel/releases/download/dev/arm-gnu-toolchain-13.3.rel1-aarch64-aarch64-none-elf.tar.xz
     # Extract the tools & clean 
     tar -Jxf arm-gnu-toolchain-13.3.rel1-aarch64-aarch64-none-elf.tar.xz
-    rm -f arm-gnu-toolchain-13.3.rel1-aarch64-aarch64-none-elf.tar.xz
     # Install other compilation dependencies (optional; you can manually install missing dependencies based on error messages)
     armbian-kernel -u
 ```
@@ -45,16 +44,16 @@ HG680P - Pantat hitam, menggunakan wireless driver yang berbeda dengan pantat pu
 
 ### Step 4: Install the driver
 ```bash
-    sudo cp -f 8189es.ko /lib/modules/$(uname -r)/kernel/drivers/net/wireless/
+    sudo cp -f 8189fs.ko /lib/modules/$(uname -r)/kernel/drivers/net/wireless/
     # Update module dependencies
     sudo depmod -a
     # Load the driver module
-    sudo modprobe 8189es
+    sudo modprobe 8189fs
 ```
 ### Step 5: Check The Modules
 ```bash
     # Check if the driver loaded successfully
-    lsmod | grep 8189es
+    lsmod | grep 8189fs
         # Check that the driver loaded successfully
         8189es 1843200 0
         cfg80211 917504 2 8189es,brcmfmac
